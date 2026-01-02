@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Plantagotchi - навчальна біологічна гра про догляд за рослинами">
+  <meta name="keywords" content="біологія, рослини, навчання, гра, STEM">
+  <title>Plantagotchi — навчальна біологічна гра</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header>
+  <h1>🌱 Plantagotchi</h1>
+  <p>Навчальна гра з біології: системний догляд за рослиною</p>
+</header>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<main class="game-layout">
+
+  <!-- ========== LEFT COLUMN: CONTROLS ========== -->
+  <section class="column controls-column">
+    <h3>Керування</h3>
+    
+    <div class="plant-select">
+      <label for="plantSelect">Вибір рослини</label>
+      <select id="plantSelect">
+        <option value="" selected disabled>Оберіть рослину</option>
+        <option value="bean">🌱 Квасоля</option>
+        <option value="rose">🌹 Троянда</option>
+        <option value="mint">🌿 М'ята</option>
+      </select>
+    </div>
+    
+    <div class="controls">
+      <button onclick="water()" aria-label="Полити рослину">💧 Полити</button>
+      <button onclick="changeLight()" aria-label="Змінити освітлення">☀️ Змінити освітлення</button>
+      <button onclick="fertilize('N')" aria-label="Додати азот">🌿 Азот (N)</button>
+      <button onclick="fertilize('P')" aria-label="Додати фосфор">🌸 Фосфор (P)</button>
+      <button onclick="fertilize('K')" aria-label="Додати калій">🍃 Калій (K)</button>
+      <button onclick="warm()" aria-label="Зігріти">🔥 Зігріти</button>
+    </div>
+    
+    <button id="pauseBtn" aria-label="Пауза">⏸ Пауза</button>
+    <p id="dayLabel">День: 0 / 35</p>
+  </section>
+
+  <!-- ========== CENTER COLUMN: PLANT + INDICATORS ========== -->
+  <section class="column center-column">
+    <div class="plant-box">
+      <img 
+        id="plantImage" 
+        src="" 
+        alt="Візуалізація рослини" 
+        style="display:none;"
+      >
+    </div>
+    
+    <div class="indicators">
+      <div class="indicator">
+        <span class="label">💧 Вологість ґрунту</span>
+        <progress id="waterBar" max="100" value="0" aria-label="Рівень води"></progress>
+      </div>
+      
+      <div class="indicator">
+        <span class="label">☀️ Освітлення</span>
+        <progress id="lightBar" max="100" value="0" aria-label="Рівень світла"></progress>
+      </div>
+      
+      <div class="indicator">
+        <span class="label">🌡️ Температура</span>
+        <progress id="tempBar" max="100" value="0" aria-label="Рівень температури"></progress>
+      </div>
+      
+      <div class="indicator">
+        <span class="label">🌿 Азот (N)</span>
+        <progress id="nBar" max="100" value="0" aria-label="Рівень азоту"></progress>
+      </div>
+      
+      <div class="indicator">
+        <span class="label">🌸 Фосфор (P)</span>
+        <progress id="pBar" max="100" value="0" aria-label="Рівень фосфору"></progress>
+      </div>
+      
+      <div class="indicator">
+        <span class="label">🍃 Калій (K)</span>
+        <progress id="kBar" max="100" value="0" aria-label="Рівень калію"></progress>
+      </div>
+      
+      <div class="indicator">
+        <span class="label">❤️ Загальний стан рослини</span>
+        <progress id="healthBar" max="100" value="100" aria-label="Здоров'я рослини"></progress>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== RIGHT COLUMN: ANALYSIS ========== -->
+  <section class="column analysis-column">
+    <h3>Стан і поради</h3>
+    <div id="stateReason" role="status" aria-live="polite"></div>
+    <div id="hint" role="status" aria-live="polite"></div>
+    
+    <h3>📈 Зміна стану з часом</h3>
+    <canvas 
+      id="chart" 
+      width="320" 
+      height="150"
+      role="img"
+      aria-label="Графік здоров'я рослини"
+    >
+      Ваш браузер не підтримує canvas
+    </canvas>
+  </section>
+
+</main>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="plants.js"></script>
+<script src="hints.js"></script>
+<script src="game.js"></script>
+
+</body>
+</html>

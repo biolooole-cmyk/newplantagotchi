@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Plantagotchi</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<h1>🌱 Plantagotchi</h1>
+
+<div id="game">
+
+  <button id="soundBtn" onclick="enableSound()">🔊 Увімкнути звук</button>
+
+  <p><strong>Оберіть рослину:</strong></p>
+  <select id="plantSelect">
+    <option value="">— обрати —</option>
+    <option value="bean">Квасоля</option>
+    <option value="rose">Троянда</option>
+    <option value="mint">М’ята</option>
+  </select>
+
+  <div class="plant-box">
+    <img id="plantImage" style="display:none;" alt="рослина">
+  </div>
+
+  <div class="indicators">
+    <div>💧 Волога ґрунту <progress id="waterBar" max="100"></progress></div>
+    <div>☀️ Освітлення <progress id="lightBar" max="100"></progress></div>
+    <div>🌡 Температура <progress id="tempBar" max="100"></progress></div>
+    <div>🌾 Мінеральне живлення <progress id="nutrientBar" max="100"></progress></div>
+    <div>❤️ Загальний стан <progress id="healthBar" max="100"></progress></div>
+  </div>
+
+  <div class="controls">
+    <button onclick="water()">Полити</button>
+    <button onclick="changeLight()">Змінити світло</button>
+    <button onclick="fertilize('N')">Азот (N)</button>
+    <button onclick="fertilize('P')">Фосфор (P)</button>
+    <button onclick="fertilize('K')">Калій (K)</button>
+  </div>
+
+  <p id="hint"></p>
+  <p id="dayLabel">День: 0 / 35</p>
+
+</div>
+
+<script src="plants.js"></script>
+<script src="hints.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
